@@ -1,0 +1,272 @@
+/* Tic-Tac-Toe Game Styles */
+/* Modern responsive design with blue gradient theme */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #74b9ff, #0984e3);
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    /* Reduce gradient banding */
+    background-image:
+      linear-gradient(135deg, #74b9ff, #0984e3),
+      repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 2px);
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2d3436;
+}
+
+/* Game Information */
+.game-info {
+    margin-bottom: 20px;
+}
+
+.current-player {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0984e3;
+    margin-bottom: 15px;
+}
+
+/* Game Board */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    background: #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 0 auto 20px;
+    max-width: 300px;
+    aspect-ratio: 1;
+}
+
+.cell {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    font-size: clamp(32px, 8vw, 48px);
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    aspect-ratio: 1;
+    min-height: 60px;
+}
+
+.cell:hover:not(:disabled) {
+    background: #f8f9fa;
+    transform: scale(0.95);
+}
+
+.cell:disabled {
+    cursor: not-allowed;
+}
+
+.cell.x {
+    color: #e17055;
+}
+
+.cell.o {
+    color: #00b894;
+}
+
+.winning-cell {
+    background: #fdcb6e !important;
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Game Controls */
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.controls button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+.controls button:hover {
+    transform: translateY(-2px);
+}
+
+.reset { 
+    background: #e17055; 
+}
+
+.new-game { 
+    background: #00b894; 
+}
+
+/* Game Status */
+.game-status {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    min-height: 25px;
+}
+
+.winner {
+    color: #00b894;
+}
+
+.draw {
+    color: #fdcb6e;
+}
+
+/* Score Board */
+.score-board {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.score-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2d3436;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.score-item {
+    flex: 1;
+}
+
+.score-label {
+    font-size: 14px;
+    color: #636e72;
+    margin-bottom: 5px;
+}
+
+.score-value {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.score-x {
+    color: #e17055;
+}
+
+.score-o {
+    color: #00b894;
+}
+
+.score-draws {
+    color: #fdcb6e;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+        margin: 5px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    .current-player {
+        font-size: 16px;
+    }
+    
+    .game-board {
+        max-width: 280px;
+    }
+    
+    .cell {
+        min-height: 50px;
+        font-size: clamp(28px, 10vw, 40px);
+    }
+    
+    .controls button {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .game-status {
+        font-size: 16px;
+    }
+    
+    .score-value {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .game-board {
+        max-width: 250px;
+    }
+    
+    .cell {
+        min-height: 45px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 10px;
+        max-width: 90vw;
+    }
+    
+    .game-board {
+        max-width: 200px;
+    }
+    
+    .score-board {
+        padding: 10px;
+    }
+}
